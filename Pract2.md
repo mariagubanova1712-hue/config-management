@@ -17,8 +17,6 @@
 
 Программы со встроенным менеджером пакетов: Python (pip), Node.js (npm), Rust (cargo), Visual Studio Code (расширения), Sublime Text (Package Control), Emacs (package.el), Vim (vim-plug), LaTeX (tlmgr), R (`install.packages`), Blender (дополнения), Minecraft-лаунчеры (моды), Arduino IDE (Library Manager).
 
-Все файлы с решениями лежат в папке [pract2](pract2).
-
 ## Задача 1
 
 Вывести служебную информацию о пакете matplotlib (Python). Разобрать основные элементы содержимого файла со служебной информацией из пакета. Как получить пакет без менеджера пакетов, прямо из репозитория?
@@ -209,8 +207,6 @@ if __name__ == "__main__":
 ```
 python3 deps2dot.py matplotlib > matplotlib.dot
 python3 deps2dot.py express js > express.dot
-dot -Tpng matplotlib.dot -o matplotlib.png
-dot -Tpng express.dot -o express.png
 cat matplotlib.dot
 ```
 
@@ -232,13 +228,147 @@ digraph "matplotlib" {
 }
 ```
 
-Зависимости matplotlib:
+```
+cat express.dot
+```
 
-![matplotlib](pract2/matplotlib.png)
+```
+digraph "express" {
+  rankdir=LR;
+  node [shape=box, style=rounded];
+  "accepts" -> "mime-types";
+  "accepts" -> "negotiator";
+  "body-parser" -> "bytes";
+  "body-parser" -> "content-type";
+  "body-parser" -> "debug";
+  "body-parser" -> "http-errors";
+  "body-parser" -> "iconv-lite";
+  "body-parser" -> "on-finished";
+  "body-parser" -> "qs";
+  "body-parser" -> "raw-body";
+  "body-parser" -> "type-is";
+  "call-bind-apply-helpers" -> "es-errors";
+  "call-bind-apply-helpers" -> "function-bind";
+  "call-bound" -> "call-bind-apply-helpers";
+  "call-bound" -> "get-intrinsic";
+  "debug" -> "ms";
+  "dunder-proto" -> "call-bind-apply-helpers";
+  "dunder-proto" -> "es-errors";
+  "dunder-proto" -> "gopd";
+  "es-object-atoms" -> "es-errors";
+  "express" -> "accepts";
+  "express" -> "body-parser";
+  "express" -> "content-disposition";
+  "express" -> "content-type";
+  "express" -> "cookie";
+  "express" -> "cookie-signature";
+  "express" -> "debug";
+  "express" -> "depd";
+  "express" -> "encodeurl";
+  "express" -> "escape-html";
+  "express" -> "etag";
+  "express" -> "finalhandler";
+  "express" -> "fresh";
+  "express" -> "http-errors";
+  "express" -> "merge-descriptors";
+  "express" -> "mime-types";
+  "express" -> "on-finished";
+  "express" -> "once";
+  "express" -> "parseurl";
+  "express" -> "proxy-addr";
+  "express" -> "qs";
+  "express" -> "range-parser";
+  "express" -> "router";
+  "express" -> "send";
+  "express" -> "serve-static";
+  "express" -> "statuses";
+  "express" -> "type-is";
+  "express" -> "vary";
+  "finalhandler" -> "debug";
+  "finalhandler" -> "encodeurl";
+  "finalhandler" -> "escape-html";
+  "finalhandler" -> "on-finished";
+  "finalhandler" -> "parseurl";
+  "finalhandler" -> "statuses";
+  "get-intrinsic" -> "call-bind-apply-helpers";
+  "get-intrinsic" -> "es-define-property";
+  "get-intrinsic" -> "es-errors";
+  "get-intrinsic" -> "es-object-atoms";
+  "get-intrinsic" -> "function-bind";
+  "get-intrinsic" -> "get-proto";
+  "get-intrinsic" -> "gopd";
+  "get-intrinsic" -> "has-symbols";
+  "get-intrinsic" -> "hasown";
+  "get-intrinsic" -> "math-intrinsics";
+  "get-proto" -> "dunder-proto";
+  "get-proto" -> "es-object-atoms";
+  "hasown" -> "function-bind";
+  "http-errors" -> "depd";
+  "http-errors" -> "inherits";
+  "http-errors" -> "setprototypeof";
+  "http-errors" -> "statuses";
+  "http-errors" -> "toidentifier";
+  "iconv-lite" -> "safer-buffer";
+  "mime-types" -> "mime-db";
+  "negotiator" -> "content-type";
+  "on-finished" -> "ee-first";
+  "once" -> "wrappy";
+  "proxy-addr" -> "forwarded";
+  "proxy-addr" -> "ipaddr.js";
+  "qs" -> "es-define-property";
+  "qs" -> "side-channel";
+  "raw-body" -> "bytes";
+  "raw-body" -> "http-errors";
+  "raw-body" -> "iconv-lite";
+  "raw-body" -> "unpipe";
+  "router" -> "debug";
+  "router" -> "depd";
+  "router" -> "is-promise";
+  "router" -> "parseurl";
+  "router" -> "path-to-regexp";
+  "send" -> "debug";
+  "send" -> "encodeurl";
+  "send" -> "escape-html";
+  "send" -> "etag";
+  "send" -> "fresh";
+  "send" -> "http-errors";
+  "send" -> "mime-types";
+  "send" -> "ms";
+  "send" -> "on-finished";
+  "send" -> "range-parser";
+  "send" -> "statuses";
+  "serve-static" -> "encodeurl";
+  "serve-static" -> "escape-html";
+  "serve-static" -> "parseurl";
+  "serve-static" -> "send";
+  "side-channel" -> "es-errors";
+  "side-channel" -> "object-inspect";
+  "side-channel" -> "side-channel-list";
+  "side-channel" -> "side-channel-map";
+  "side-channel" -> "side-channel-weakmap";
+  "side-channel-list" -> "es-errors";
+  "side-channel-list" -> "object-inspect";
+  "side-channel-map" -> "call-bound";
+  "side-channel-map" -> "es-errors";
+  "side-channel-map" -> "get-intrinsic";
+  "side-channel-map" -> "object-inspect";
+  "side-channel-weakmap" -> "call-bound";
+  "side-channel-weakmap" -> "es-errors";
+  "side-channel-weakmap" -> "get-intrinsic";
+  "side-channel-weakmap" -> "object-inspect";
+  "side-channel-weakmap" -> "side-channel-map";
+  "type-is" -> "content-type";
+  "type-is" -> "media-typer";
+  "type-is" -> "mime-types";
+}
+```
 
-Зависимости express (полный граф, код в [express.dot](pract2/express.dot)):
+Изображения можно получить командами:
 
-![express](pract2/express.png)
+```
+dot -Tpng matplotlib.dot -o matplotlib.png
+dot -Tpng express.dot -o express.png
+```
 
 ## Задача 4
 
