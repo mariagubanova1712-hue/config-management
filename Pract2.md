@@ -643,3 +643,4 @@ solve maximize root + foo + left + right + shared + target;
   shared (не нужен)
   target 2.0.0
 ```
+финиш 
